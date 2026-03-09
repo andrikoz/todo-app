@@ -5,8 +5,8 @@ Simple todo list application to demonstrate docker
 
 Make sure you have the following or newer versions:
 
-- node: 12.22
-- npm: 7.7
+- node: 22.x (LTS)
+- npm: 10.x (or yarn 1.22+)
 
 Install dependencies:
 
@@ -139,7 +139,7 @@ $ docker-compose up -d
 Optimized Dockerfile:
 
 ```yaml
-FROM node:12-alpine
+FROM node:22-alpine
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --production

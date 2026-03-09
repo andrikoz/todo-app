@@ -7,9 +7,11 @@ const ITEM = {
     completed: false,
 };
 
-beforeEach(() => {
-    if (fs.existsSync('/etc/todos/todo.db')) {
-        fs.unlinkSync('/etc/todos/todo.db');
+beforeEach(async () => {
+    const location = process.env.SQLITE_DB_LOCATION || '/tmp/todos/todo.db';
+    try { await db.teardown(); } catch (_) {}
+    if (fs.existsSync(location)) {
+        fs.unlinkSync(location);
     }
 });
 
